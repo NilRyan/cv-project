@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unused-state */
+/* eslint-disable import/no-named-as-default */
 import React, { Component } from 'react';
 import '../styles/container.css';
 import DisplayResume from './DisplayResume';
+import WorkExperience from './WorkExperience';
 
 export class GeneralInfo extends Component {
   constructor(props) {
@@ -31,6 +34,7 @@ export class GeneralInfo extends Component {
 
   handleInputChange(e) {
     const { name, value } = e.target;
+    console.log(e.target);
     this.setState(() => ({
       [name]: value,
     }));
@@ -51,12 +55,6 @@ export class GeneralInfo extends Component {
       genEmail,
       genAddress,
       genPhone,
-      workCompany,
-      workJobTitle,
-      workLocation,
-      workCoreResponsibility,
-      workDateStart,
-      workDateEnd,
       eduUniversity,
       eduLocation,
       eduDegree,
@@ -103,50 +101,10 @@ export class GeneralInfo extends Component {
             placeholder="Address"
           />
         </form>
-        <form className="work">
-          <input
-            name="workCompany"
-            value={workCompany}
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Company Name"
-          />
-          <input
-            name="workJobTitle"
-            value={workJobTitle}
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Job Title"
-          />
-          <input
-            name="workLocation"
-            value={workLocation}
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Location"
-          />
-          <input
-            name="workCoreResponsibility"
-            value={workCoreResponsibility}
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Core Reponsibility"
-          />
-          <input
-            name="workDateStart"
-            value={workDateStart}
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Date Start"
-          />
-          <input
-            name="workDateEnd"
-            value={workDateEnd}
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Date End"
-          />
-        </form>
+        <WorkExperience
+          data={this.state}
+          onInputChange={this.handleInputChange}
+        />
         <form className="education">
           <input
             name="eduUniversity"
