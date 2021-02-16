@@ -17,7 +17,7 @@ export class WorkExperience extends Component {
     } = data;
 
     return (
-      <div>
+      <form className="work-experience">
         <input
           name="workCompany"
           value={workCompany}
@@ -60,7 +60,7 @@ export class WorkExperience extends Component {
           type="text"
           placeholder="Date End"
         />
-      </div>
+      </form>
     );
   }
 }
