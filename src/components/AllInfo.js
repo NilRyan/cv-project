@@ -1,12 +1,13 @@
 /* eslint-disable react/no-unused-state */
 /* eslint-disable import/no-named-as-default */
 import React, { Component } from 'react';
-import '../styles/container.css';
+import '../styles/AllInfo.css';
 import DisplayResume from './output/DisplayResume';
 import EducationalInfo from './input/EducationInfo';
 import SkillsInfo from './input/SkillsInfo';
 import WorkExperience from './input/WorkExperience';
 import GeneralInfo from './input/GeneralInfo';
+import Header from './output/Header';
 
 export class AllInfo extends Component {
   constructor(props) {
@@ -55,21 +56,30 @@ export class AllInfo extends Component {
     const { skills } = this.state;
     return (
       <div>
-        <GeneralInfo data={this.state} onInputChange={this.handleInputChange} />
-        <WorkExperience
-          data={this.state}
-          onInputChange={this.handleInputChange}
-        />
-        <EducationalInfo
-          data={this.state}
-          onInputChange={this.handleInputChange}
-        />
-
-        <SkillsInfo
-          data={this.state}
-          onInputChange={this.handleInputChange}
-          onSubmit={this.handleSubmit}
-        />
+        <Header />
+        <div className="input-wrapper">
+          <h1 className="header">General Info</h1>
+          <GeneralInfo
+            data={this.state}
+            onInputChange={this.handleInputChange}
+          />
+          <h1 className="header">Work Experience</h1>
+          <WorkExperience
+            data={this.state}
+            onInputChange={this.handleInputChange}
+          />
+          <h1 className="header">Education</h1>
+          <EducationalInfo
+            data={this.state}
+            onInputChange={this.handleInputChange}
+          />
+          <h1 className="header">Skills</h1>
+          <SkillsInfo
+            data={this.state}
+            onInputChange={this.handleInputChange}
+            onSubmit={this.handleSubmit}
+          />
+        </div>
         <DisplayResume skills={skills} info={this.state} />
       </div>
     );

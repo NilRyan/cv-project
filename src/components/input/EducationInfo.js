@@ -15,7 +15,7 @@ export class EducationalInfo extends Component {
     } = data;
 
     return (
-      <form className="education">
+      <form className="edu">
         <input
           name="eduUniversity"
           value={eduUniversity}

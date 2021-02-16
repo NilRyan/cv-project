@@ -1,5 +1,5 @@
 import ListSkills from './ListSkills';
-
+import '../../styles/DisplayResume.css';
 /* eslint-disable react/prop-types */
 const DisplayResume = (props) => {
   const { info } = props;

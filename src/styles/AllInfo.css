@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+.head{
+  color: #4caf50;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+.head > h1 {
+  display: flex;
+  align-items: center;
+}
+
+.head > h1{
+  font-weight: lighter;
+  font-size: 50px;
+  font-family: 'Damion', cursive;
+}
+.input-wrapper{
+  width: 700px;
+  height: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.input-wrapper > h1{
+  font-family: 'Damion', cursive;
+  font-weight: lighter;
+  font-size: 35px;
+  color: #4caf50;
+  display: flex;
+  flex-direction: row;
+}
+.header:before, .header:after {
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid #000;
+  margin: auto;
+}
+.header:before {
+  margin-right: 10px;
+}
+
+.header:after {
+  margin-left: 10px;
+}
+
+input{
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  height: 50px;
+  font-weight: bold;
+  margin: 20px;
+}
+input:focus{
+  background-color: beige;
+  transition: 0.4s;
+}
+
+button{
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+button:hover{
+transform: scale(1.1);
+}
+
+.skills-info > div{
+  display: flex;
+  place-content: center;
+  margin-bottom: -15px;
+}
+
