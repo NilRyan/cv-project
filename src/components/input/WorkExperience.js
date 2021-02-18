@@ -6,60 +6,55 @@ export class WorkExperience extends Component {
   render() {
     // eslint-disable-next-line react/prop-types
     const { data, onInputChange } = this.props;
-    const {
-      // eslint-disable-next-line react/prop-types
-      workCompany,
-      workJobTitle,
-      workLocation,
-      workCoreResponsibility,
-      workDateStart,
-      workDateEnd,
-    } = data;
 
     return (
       <form className="work-experience">
-        <input
-          name="workCompany"
-          value={workCompany}
-          onChange={onInputChange}
-          type="text"
-          placeholder="Company Name"
-        />
-        <input
-          name="workJobTitle"
-          value={workJobTitle}
-          onChange={onInputChange}
-          type="text"
-          placeholder="Job Title"
-        />
-        <input
-          name="workLocation"
-          value={workLocation}
-          onChange={onInputChange}
-          type="text"
-          placeholder="Location"
-        />
-        <input
-          name="workCoreResponsibility"
-          value={workCoreResponsibility}
-          onChange={onInputChange}
-          type="text"
-          placeholder="Core Reponsibility"
-        />
-        <input
-          name="workDateStart"
-          value={workDateStart}
-          onChange={onInputChange}
-          type="text"
-          placeholder="Date Start"
-        />
-        <input
-          name="workDateEnd"
-          value={workDateEnd}
-          onChange={onInputChange}
-          type="text"
-          placeholder="Date End"
-        />
+        {data.map((element, index) => (
+          <div key={index}>
+            <input
+              name="workCompany"
+              value={element.workCompany}
+              onChange={(e) => onInputChange(index, e)}
+              type="text"
+              placeholder="Company Name"
+            />
+            <input
+              name="workJobTitle"
+              value={element.workJobTitle}
+              onChange={(e) => onInputChange(index, e)}
+              type="text"
+              placeholder="Job Title"
+            />
+            <input
+              name="workLocation"
+              value={element.workLocation}
+              onChange={(e) => onInputChange(index, e)}
+              type="text"
+              placeholder="Location"
+            />
+            <input
+              name="workCoreResponsibility"
+              value={element.workCoreResponsibility}
+              onChange={(e) => onInputChange(index, e)}
+              type="text"
+              placeholder="Core Reponsibility"
+            />
+            <input
+              name="workDateStart"
+              value={element.workDateStart}
+              onChange={(e) => onInputChange(index, e)}
+              type="text"
+              placeholder="Date Start"
+            />
+            <input
+              name="workDateEnd"
+              value={element.workDateEnd}
+              onChange={(e) => onInputChange(index, e)}
+              type="text"
+              placeholder="Date End"
+            />
+          </div>
+        ))}
       </form>
     );
   }

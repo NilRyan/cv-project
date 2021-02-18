@@ -9,16 +9,11 @@ const DisplayResume = (props) => {
     genEmail,
     genAddress,
     genPhone,
-    workCompany,
-    workJobTitle,
-    workLocation,
-    workCoreResponsibility,
-    workDateStart,
-    workDateEnd,
     eduUniversity,
     eduLocation,
     eduDegree,
     eduGradDate,
+    work,
     skills,
   } = info;
 
@@ -26,70 +21,15 @@ const DisplayResume = (props) => {
     <div className="container">
       <div className="wrapper">
         <div className="general">
-          <h1>{`${genFirstName} ${genLastName}`}</h1>
+          <h1>
+            {genFirstName || `Bob`} {genLastName || `Arum`}
+          </h1>
+
           <ul>
-            <li>{genEmail}</li>
-            <li>{genPhone}</li>
-            <li>{genAddress}</li>
+            <li>{genEmail || `email@email.com`}</li>
+            <li>{genPhone || `012345678`}</li>
+            <li>{genAddress || `Baguio City`}</li>
           </ul>
-        </div>
-
-        <div className="work-exp">
-          <h2>Work Experience</h2>
-
-          <div className="work-wrapper">
-            <div className="work-info">
-              <h1>{workCompany}</h1>
-              <h3>{workLocation}</h3>
-              <h4>{workJobTitle}</h4>
-              <h4>{`${workDateStart} ${workDateEnd}`}</h4>
-            </div>
-            <div className="work-core">
-              <li>{workCoreResponsibility}</li>
-              <li>{workCoreResponsibility}</li>
-              <li>{workCoreResponsibility}</li>
-            </div>
-          </div>
-          <div className="work-wrapper">
-            <div className="work-info">
-              <h1>{workCompany}</h1>
-              <h3>{workLocation}</h3>
-              <h4>{workJobTitle}</h4>
-              <h4>{`${workDateStart} ${workDateEnd}`}</h4>
-            </div>
-            <div className="work-core">
-              <li>{workCoreResponsibility}</li>
-              <li>{workCoreResponsibility}</li>
-              <li>{workCoreResponsibility}</li>
-            </div>
-          </div>
-          <div className="work-wrapper">
-            <div className="work-info">
-              <h1>{workCompany}</h1>
-              <h3>{workLocation}</h3>
-              <h4>{workJobTitle}</h4>
-              <h4>{`${workDateStart} ${workDateEnd}`}</h4>
-            </div>
-            <div className="work-core">
-              <li>{workCoreResponsibility}</li>
-              <li>{workCoreResponsibility}</li>
-              <li>{workCoreResponsibility}</li>
-            </div>
-          </div>
-        </div>
-
-        <div className="education">
-          <h2>Education</h2>
-          <div className="edu-wrapper">
-            <div className="edu-info">
-              <h2>{eduUniversity}</h2>
-              <h3>{eduLocation}</h3>
-              <h3>{eduDegree}</h3>
-              <h4>{eduGradDate}</h4>
-            </div>
-            <li>Dean's List</li>
-            <li>Dean's List</li>
-          </div>
         </div>
         <div className="skills">
           <h2>Skills</h2>
@@ -97,6 +37,40 @@ const DisplayResume = (props) => {
             <div className="skills-info">
               <ListSkills skills={skills} />
             </div>
+          </div>
+        </div>
+        <div className="work-exp">
+          <h2>Work Experience</h2>
+          {work.map((element, index) => (
+            <div key={index} className="work-wrapper">
+              <div className="work-info">
+                <h1>{element.workCompany || `Company`}</h1>
+                <h3>{element.workLocation || `Location`}</h3>
+                <h4>{element.workJobTitle || `Job Title`}</h4>
+                <h4>
+                  {element.workDateStart || `Month Year`}-
+                  {element.workDateEnd || `Month Year`}
+                </h4>
+              </div>
+              <div className="work-core">
+                <li>
+                  {element.workCoreResponsibility || `Core Responsibilities`}
+                </li>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="education">
+          <h2>Education</h2>
+          <div className="edu-wrapper">
+            <div className="edu-info">
+              <h2>{eduUniversity || `University`}</h2>
+              <h3>{eduLocation || `City, Region`}</h3>
+              <h3>{eduDegree || `Degree`}</h3>
+              <h4>{eduGradDate || `Graduation Date`}</h4>
+            </div>
+            <li>Awards, Achievement</li>
           </div>
         </div>
       </div>

@@ -57,12 +57,19 @@ input:focus{
 }
 
 button{
+  background:none;
   border: none;
   outline: none;
   cursor: pointer;
 }
 button:hover{
 transform: scale(1.1);
+}
+.add-work{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 .skills-info > div{
@@ -71,3 +78,9 @@ transform: scale(1.1);
   margin-bottom: -15px;
 }
 
+.work-experience > div {
+  border-bottom: 0.5px dotted black;
+}
+.work-button-wrapper{
+  display: flex;
+}

@@ -38,8 +38,10 @@ li{
   list-style-type: none;
   font-weight: bold;
 }
+
 .work-exp {
   border-bottom: 2px solid black;
+  min-height: 200px;
 }
 .work-exp > h2{
   width: 658px;
@@ -51,6 +53,7 @@ li{
 }
 .work-info {
   display: grid;
+  margin-top: 10px;
   grid-template-columns: 5fr 2fr;
   font-family: 'EB Garamond', serif;
 }
@@ -87,6 +90,7 @@ li{
 
 .skills-info{
   width: 658px;
+  min-height: 100px;
 }
 .skills-info>ul{
   display: flex;

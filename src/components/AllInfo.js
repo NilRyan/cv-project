@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable import/no-named-as-default */
 import React, { Component } from 'react';
@@ -8,6 +11,7 @@ import SkillsInfo from './input/SkillsInfo';
 import WorkExperience from './input/WorkExperience';
 import GeneralInfo from './input/GeneralInfo';
 import Header from './output/Header';
+import AddWork from './input/AddWork';
 
 export class AllInfo extends Component {
   constructor(props) {
@@ -18,12 +22,16 @@ export class AllInfo extends Component {
       genAddress: '',
       genEmail: '',
       genPhone: '',
-      workCompany: '',
-      workJobTitle: '',
-      workLocation: '',
-      workCoreResponsibility: '',
-      workDateStart: '',
-      workDateEnd: '',
+      work: [
+        {
+          workCompany: '',
+          workJobTitle: '',
+          workLocation: '',
+          workCoreResponsibility: '',
+          workDateStart: '',
+          workDateEnd: '',
+        },
+      ],
       eduUniversity: '',
       eduLocation: '',
       eduDegree: '',
@@ -34,6 +42,9 @@ export class AllInfo extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.workInputChange = this.workInputChange.bind(this);
+    this.handleAddWork = this.handleAddWork.bind(this);
+    this.handleRemoveWork = this.handleRemoveWork.bind(this);
   }
 
   handleInputChange(e) {
@@ -52,11 +63,44 @@ export class AllInfo extends Component {
     }));
   }
 
+  handleAddWork() {
+    this.setState((prevState) => ({
+      work: [
+        ...prevState.work,
+        {
+          workCompany: '',
+          workJobTitle: '',
+          workLocation: '',
+          workCoreResponsibility: '',
+          workDateStart: '',
+          workDateEnd: '',
+        },
+      ],
+    }));
+  }
+
+  handleRemoveWork(index) {
+    const values = [...this.state.work];
+    values.splice(index, 1);
+    this.setState(() => ({
+      work: values,
+    }));
+  }
+
+  workInputChange(index, e) {
+    const values = [...this.state.work];
+    values[index][e.target.name] = e.target.value;
+    this.setState(() => ({
+      work: values,
+    }));
+  }
+
   render() {
-    const { skills } = this.state;
+    const { skills, work } = this.state;
     return (
       <div>
         <Header />
+        <DisplayResume skills={skills} info={this.state} />
         <div className="input-wrapper">
           <h1 className="header">General Info</h1>
           <GeneralInfo
@@ -64,9 +108,10 @@ export class AllInfo extends Component {
             onInputChange={this.handleInputChange}
           />
           <h1 className="header">Work Experience</h1>
-          <WorkExperience
-            data={this.state}
-            onInputChange={this.handleInputChange}
+          <WorkExperience data={work} onInputChange={this.workInputChange} />
+          <AddWork
+            onAdd={this.handleAddWork}
+            onDelete={this.handleRemoveWork}
           />
           <h1 className="header">Education</h1>
           <EducationalInfo
@@ -74,13 +119,13 @@ export class AllInfo extends Component {
             onInputChange={this.handleInputChange}
           />
           <h1 className="header">Skills</h1>
+
           <SkillsInfo
             data={this.state}
             onInputChange={this.handleInputChange}
             onSubmit={this.handleSubmit}
           />
         </div>
-        <DisplayResume skills={skills} info={this.state} />
       </div>
     );
   }
