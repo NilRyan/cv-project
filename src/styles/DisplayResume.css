@@ -91,15 +91,14 @@ li{
 .skills-info{
   width: 658px;
   min-height: 100px;
+ 
 }
 .skills-info>ul{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   list-style-type: none;
   width: 658px;
 }
 .skills-info>ul>li{
+  margin-top: 5px;
   margin-right: 5px;
 }
 .skills > h2 {

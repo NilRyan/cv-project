@@ -36,6 +36,8 @@ export class AllInfo extends Component {
       eduLocation: '',
       eduDegree: '',
       eduGradDate: '',
+      eduAwards: [],
+      eduAward: '',
       skill: '',
       skills: [],
     };
@@ -45,6 +47,9 @@ export class AllInfo extends Component {
     this.workInputChange = this.workInputChange.bind(this);
     this.handleAddWork = this.handleAddWork.bind(this);
     this.handleRemoveWork = this.handleRemoveWork.bind(this);
+    this.handleEduSubmit = this.handleEduSubmit.bind(this);
+    this.handleRemoveAward = this.handleRemoveAward.bind(this);
+    this.handleRemoveSkill = this.handleRemoveSkill.bind(this);
   }
 
   handleInputChange(e) {
@@ -60,6 +65,22 @@ export class AllInfo extends Component {
     this.setState((prevState) => ({
       skills: [...prevState.skills, prevState.skill],
       skill: '',
+    }));
+  }
+
+  handleRemoveSkill(index) {
+    const values = [...this.state.skills];
+    values.splice(index, 1);
+    this.setState(() => ({
+      skills: values,
+    }));
+  }
+
+  handleEduSubmit(e) {
+    e.preventDefault();
+    this.setState((prevState) => ({
+      eduAwards: [...prevState.eduAwards, prevState.eduAward],
+      eduAward: '',
     }));
   }
 
@@ -84,6 +105,14 @@ export class AllInfo extends Component {
     values.splice(index, 1);
     this.setState(() => ({
       work: values,
+    }));
+  }
+
+  handleRemoveAward(index) {
+    const values = [...this.state.eduAwards];
+    values.splice(index, 1);
+    this.setState(() => ({
+      eduAwards: values,
     }));
   }
 
@@ -117,6 +146,8 @@ export class AllInfo extends Component {
           <EducationalInfo
             data={this.state}
             onInputChange={this.handleInputChange}
+            onEduInputChange={this.handleEduSubmit}
+            onRemoveAward={this.handleRemoveAward}
           />
           <h1 className="header">Skills</h1>
 
@@ -124,6 +155,7 @@ export class AllInfo extends Component {
             data={this.state}
             onInputChange={this.handleInputChange}
             onSubmit={this.handleSubmit}
+            onRemoveSkill={this.handleRemoveSkill}
           />
         </div>
       </div>

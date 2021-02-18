@@ -12,3 +12,11 @@
   box-sizing: border-box;
 }
 
+.edu {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.awards {
+  display: flex;
+}

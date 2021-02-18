@@ -13,6 +13,7 @@ const DisplayResume = (props) => {
     eduLocation,
     eduDegree,
     eduGradDate,
+    eduAwards,
     work,
     skills,
   } = info;
@@ -70,7 +71,9 @@ const DisplayResume = (props) => {
               <h3>{eduDegree || `Degree`}</h3>
               <h4>{eduGradDate || `Graduation Date`}</h4>
             </div>
-            <li>Awards, Achievement</li>
+            {eduAwards.map((item, index) => (
+              <li key={`${item}${index}`}>{item}</li>
+            ))}
           </div>
         </div>
       </div>
