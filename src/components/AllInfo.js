@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/button-has-type */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable import/no-named-as-default */
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import '../styles/AllInfo.css';
 import DisplayResume from './output/DisplayResume';
 import EducationalInfo from './input/EducationInfo';
@@ -16,6 +19,7 @@ import AddWork from './input/AddWork';
 export class AllInfo extends Component {
   constructor(props) {
     super(props);
+    this.inputRef = React.createRef();
     this.state = {
       genFirstName: '',
       genLastName: '',
@@ -41,7 +45,6 @@ export class AllInfo extends Component {
       skill: '',
       skills: [],
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.workInputChange = this.workInputChange.bind(this);
@@ -50,6 +53,7 @@ export class AllInfo extends Component {
     this.handleEduSubmit = this.handleEduSubmit.bind(this);
     this.handleRemoveAward = this.handleRemoveAward.bind(this);
     this.handleRemoveSkill = this.handleRemoveSkill.bind(this);
+    this.scrollIntoInput = this.scrollIntoInput.bind(this);
   }
 
   handleInputChange(e) {
@@ -116,6 +120,10 @@ export class AllInfo extends Component {
     }));
   }
 
+  scrollIntoInput() {
+    this.inputRef.current.scrollIntoView();
+  }
+
   workInputChange(index, e) {
     const values = [...this.state.work];
     values[index][e.target.name] = e.target.value;
@@ -128,9 +136,9 @@ export class AllInfo extends Component {
     const { skills, work } = this.state;
     return (
       <div>
-        <Header />
+        <Header onClick={this.scrollIntoInput} />
         <DisplayResume skills={skills} info={this.state} />
-        <div className="input-wrapper">
+        <div ref={this.inputRef} className="input-wrapper">
           <h1 className="header">General Info</h1>
           <GeneralInfo
             data={this.state}
@@ -157,6 +165,17 @@ export class AllInfo extends Component {
             onSubmit={this.handleSubmit}
             onRemoveSkill={this.handleRemoveSkill}
           />
+        </div>
+        <div
+          onClick={() =>
+            window.scrollTo({
+              behavior: 'smooth',
+              top: 0,
+            })
+          }
+          className="scroll-cv"
+        >
+          <button className="scroll-button">SCROLL TO CV</button>
         </div>
       </div>
     );
