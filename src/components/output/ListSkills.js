@@ -8,6 +8,19 @@ export default class ListSkills extends Component {
   }
 
   render() {
-    return <ul> {this.listSkills()}</ul>;
+    const { skills } = this.props;
+    if (skills.length > 0) {
+      return <ul> {this.listSkills()}</ul>;
+    }
+    return (
+      <ul>
+        <li>
+          Languages: Javascript, TypeScript, Java, Dart, FORTRAN, COBOL, Ruby,
+          Swift, Go, C#, C++, SQL, Haskell, Lisp, Rust
+        </li>
+        <li>Frameworks,Libraries: ReactJS, AngularJS, VueJS, NodeJS </li>
+        <li>Tools: Docker, AWS, ExpressJS, WebPack, Babel</li>
+      </ul>
+    );
   }
 }

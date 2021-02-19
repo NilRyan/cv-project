@@ -42,6 +42,7 @@ li{
 .work-exp {
   border-bottom: 2px solid black;
   min-height: 200px;
+  margin-bottom: 5px;
 }
 .work-exp > h2{
   width: 658px;
@@ -67,9 +68,11 @@ li{
 }
 .education {
   border-bottom: 2px solid black;
+  margin-bottom: 10px;
 }
 .education > h2 {
   border-bottom: 2px solid black;
+  margin-bottom: 5px;
 }
 .edu-info {
   display: grid;

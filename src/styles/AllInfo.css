@@ -5,6 +5,9 @@
   justify-items: center;
   align-items: center;
 }
+.head:hover{
+  cursor: pointer;
+}
 .head > h1 {
   display: flex;
   align-items: center;
